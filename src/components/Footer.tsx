@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Image logo */}
         <img 
-          src="public/assets/logo.png" 
+          src="/assets/logo.png" 
           alt="RYTWAY" 
           className="h-8 w-auto"
         />
