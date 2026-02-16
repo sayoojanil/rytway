@@ -8,7 +8,7 @@ const About = () => {
   const words = ["WHO", "WE", "ARE"];
 
   return (
-    <SectionWrapper id="about" number="04" numberPosition="left">
+    <SectionWrapper id="about" number="03" numberPosition="right">
       <div ref={ref} className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         {/* Heading side */}
         <div>

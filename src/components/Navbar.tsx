@@ -14,8 +14,12 @@ const Navbar = () => {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
-      <a href="#" className="font-heading font-bold text-xl tracking-wider text-foreground">
-        TECHNO<span className="text-primary">DEA</span>
+      <a href="#" className="flex items-center">
+        <img 
+          src="src/assets/logo.png" 
+          alt="Company logo" 
+          className="h-24 w-24" // Adjust height as needed
+        />
       </a>
 
       {/* Desktop links */}
@@ -24,7 +28,7 @@ const Navbar = () => {
           <a
             key={link}
             href={`#${link.toLowerCase().replace(" ", "-")}`}
-            className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+            className="font-body text-sm text-muted-foreground hover:text-green-400 transition-colors duration-300"
           >
             {link}
           </a>

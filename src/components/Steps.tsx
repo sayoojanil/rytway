@@ -52,16 +52,16 @@ const Steps = () => {
               initial={{ opacity: 0, x: -40 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group flex items-start gap-6 md:gap-10 py-8 border-b border-border hover:border-primary/40 transition-colors duration-300 cursor-default"
+              className="group flex items-start gap-6 md:gap-10 py-8 border-b border-border hover:border-blue-400 transition-colors duration-300 cursor-default"
             >
-              <span className="font-heading font-black text-3xl md:text-5xl text-primary/60 group-hover:text-primary transition-colors duration-300 shrink-0">
+              <span className="font-heading font-black text-3xl md:text-5xl text-green-400 group-hover:text-blue-400 transition-colors duration-300 shrink-0">
                 {step.num}
               </span>
               <div>
-                <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground mb-2 group-hover:text-blue-400 transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="font-body text-muted-foreground text-sm md:text-base max-w-xl">
+                <p className="font-body text-muted-foreground text-sm md:text-base max-w-xl hover:text-blue-400 transition-colors duration-300">
                   {step.desc}
                 </p>
               </div>

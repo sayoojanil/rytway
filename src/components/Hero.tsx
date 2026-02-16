@@ -7,21 +7,21 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12"
     >
       {/* Large background number */}
-      <motion.span
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-        className="section-number right-4 md:right-16 top-1/2 -translate-y-1/2"
-      >
-        01
-      </motion.span>
+        <motion.span
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+          className="section-number right-4 md:right-16 top-1/2 -translate-y-1/2 text-green-400/10"
+        >
+          01
+        </motion.span>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-heading text-primary font-semibold text-sm md:text-base tracking-[0.3em] uppercase mb-6"
+          className="font-heading text-green-400 font-semibold text-sm md:text-base tracking-[0.3em] uppercase mb-6"
         >
           #TogetherWeCan
         </motion.p>
@@ -32,10 +32,10 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-heading font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight tracking-tight"
         >
-          Where{" "}
-          <span className="gradient-text">Creativity</span>
+          Grow your bussiness THE {" "}
+          <span className="text-green-400">RYTWAY</span>
           <br />
-          Never Ends
+          
         </motion.h1>
 
         <motion.div
@@ -46,7 +46,7 @@ const Hero = () => {
         >
           <a
             href="#services"
-            className="inline-block font-heading font-semibold text-sm tracking-wider uppercase px-8 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm"
+            className="inline-block font-heading font-semibold text-sm tracking-wider uppercase px-8 py-4 border border-white text-green-400 hover:text-blue-500 transition-colors duration-300"
           >
             Explore Our Work
           </a>

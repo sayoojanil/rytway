@@ -23,15 +23,15 @@ const WhySection = () => {
             transition={{ duration: 0.6 }}
             className="font-heading font-black text-5xl md:text-7xl lg:text-8xl block leading-none"
           >
-            TECHNO
+            WHY
           </motion.span>
           <motion.span
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-black text-5xl md:text-7xl lg:text-8xl block leading-none gradient-text"
+            className="font-heading font-black text-5xl md:text-7xl lg:text-8xl block leading-none text-green-400"
           >
-            DEA
+            RYTWAY
           </motion.span>
           <motion.span
             initial={{ opacity: 0, y: 30 }}
@@ -39,7 +39,7 @@ const WhySection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-heading font-black text-5xl md:text-7xl lg:text-8xl block leading-none text-primary"
           >
-            WHY
+            
           </motion.span>
         </div>
 
@@ -62,7 +62,7 @@ const WhySection = () => {
                 transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                 className="flex items-center gap-3 font-heading font-semibold text-foreground"
               >
-                <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 shrink-0" />
                 {bullet}
               </motion.li>
             ))}

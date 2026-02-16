@@ -30,7 +30,7 @@ const SectionWrapper = ({
           initial={{ opacity: 0, scale: 0.8 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
-          className={`section-number ${
+          className={`section-number text-green-500/20 ${
             numberPosition === "right"
               ? "right-0 md:-right-10"
               : "left-0 md:-left-10"

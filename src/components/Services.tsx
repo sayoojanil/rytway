@@ -23,7 +23,7 @@ const Services = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <SectionWrapper id="services" number="03" numberPosition="right">
+    <SectionWrapper id="services" number="02" numberPosition="right">
       <div ref={ref}>
         <motion.h2
           initial={{ opacity: 0, x: -30 }}
@@ -45,11 +45,11 @@ const Services = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group relative p-8 border border-border rounded-lg bg-card card-hover cursor-pointer"
               >
-                <Icon className="w-8 h-8 text-primary mb-5 group-hover:scale-110 transition-transform duration-300" />
+                <Icon className="w-8 h-8 text-green-400 mb-5 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-heading font-bold text-lg text-foreground">
                   {service.title}
                 </h3>
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primaryto-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             );
           })}
