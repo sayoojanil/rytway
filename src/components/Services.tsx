@@ -11,11 +11,11 @@ import {
 } from "lucide-react";
 
 const services = [
-  { title: "Brand Strategy", icon: Lightbulb },
+  
   { title: "Digital Marketing", icon: BarChart3 },
   { title: "Content Creation", icon: PenTool },
-  { title: "Web Development", icon: Code2 },
-  { title: "Social Media", icon: Share2 },
+ 
+
   { title: "Analytics & SEO", icon: TrendingUp },
 ];
 
