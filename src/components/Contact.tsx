@@ -35,7 +35,7 @@ const Contact = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="p-8 border border-primary/30 rounded-lg text-center"
           >
-            <p className="font-heading font-bold text-xl text-primary">Thank you!</p>
+            <p className="font-heading font-bold text-xl text-green-400">Thank you!</p>
             <p className="font-body text-muted-foreground mt-2">We'll get back to you soon.</p>
           </motion.div>
         ) : (
