@@ -28,7 +28,7 @@ const About = () => {
             initial={{ scaleX: 0 }}
             animate={inView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="h-1 w-24 bg-primary mt-6 origin-left"
+            className="h-1 w-24 bg-green-400 mt-6 origin-left"
           />
         </div>
 
