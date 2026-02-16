@@ -64,7 +64,7 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          className="w-px h-8 bg-primary/50"
+          className="w-px h-8 bg-green-400"
         />
       </motion.div>
     </section>
