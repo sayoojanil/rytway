@@ -98,7 +98,7 @@
     @apply transition-all duration-500 ease-out;
   }
   .card-hover:hover {
-    @apply border-primary/40;
+    @apply border-green-400
     box-shadow: 0 0 30px hsl(var(--primary) / 0.15);
     transform: translateY(-4px);
   }

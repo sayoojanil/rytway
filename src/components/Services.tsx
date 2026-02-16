@@ -43,7 +43,7 @@ const Services = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative p-8 border border-border rounded-lg bg-card card-hover cursor-pointer"
+                className="group relative p-8 border border-border rounded-none bg-card card-hover cursor-pointer"
               >
                 <Icon className="w-8 h-8 text-green-400 mb-5 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="font-heading font-bold text-lg text-foreground">
