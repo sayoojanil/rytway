@@ -16,7 +16,7 @@ const Navbar = () => {
     >
       <a href="#" className="flex items-center -my-4"> {/* Negative margin to offset larger logo */}
         <img 
-          src="src/assets/logo.png" 
+          src="public/assets/logo.png" 
           alt="Company logo" 
           className="h-32 w-32 object-contain" // Increased from h-24 w-24 to h-32 w-32
         />
