@@ -18,7 +18,7 @@ const Navbar = () => {
         <img 
           src="assets/logo.png" 
           alt="Company logo" 
-          className="h-24 w-36 object-contain" // Increased from h-24 w-24 to h-32 w-32
+          className="h-240 w-36 object-contain" // Increased from h-24 w-24 to h-32 w-32
         />
       </a>
 
