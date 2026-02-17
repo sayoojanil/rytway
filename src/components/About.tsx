@@ -39,11 +39,10 @@ const About = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
         >
           <p className="font-body text-muted-foreground leading-relaxed text-sm md:text-base">
-            We operate with passion, adaptability, and a focus on customers, providing their preferred partner for business services and solutions. As a leading digital marketing agency, we bring excellent expertise and creative flair to every project, helping our customers achieve their goals with maximum efficiency and effectiveness.
-          </p>
+Ryt Way Marketing Hub is a team of passionate marketers, designers, strategists, and content creators dedicated to building powerful brand identities.          </p>
           <p className="font-body text-muted-foreground leading-relaxed text-sm md:text-base mt-4">
-            We have a unique ability to do better research about our client&apos;s businesses and target customers to develop productive business solutions that will help the firm grow. We use our knowledge to create plans that match our client&apos;s objectives and targets, assisting clients big and small across many industries.
-          </p>
+
+We believe marketing is not just about posting content — it's about positioning, visibility, and long-term brand growth.          </p>
         </motion.div>
       </div>
     </SectionWrapper>

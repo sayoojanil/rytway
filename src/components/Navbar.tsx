@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const navLinks = [ "Services", "About", "Steps", "Why Us", "Contact"];
+const navLinks = [ "Services", "About", "Our Mission", "Why Us", "Contact"];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -12,13 +12,13 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/80 backdrop-blur-md border-b border-border/50"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/10 backdrop-blur-md border-b border-border/50"
     >
       <a href="#" className="flex items-center -my-4"> {/* Negative margin to offset larger logo */}
         <img 
           src="assets/logo.png" 
           alt="Company logo" 
-          className="h-240 w-36 object-contain" // Increased from h-24 w-24 to h-32 w-32
+          className="h-20 w-36 object-contain" // Increased from h-24 w-24 to h-32 w-32
         />
       </a>
 

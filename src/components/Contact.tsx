@@ -1,133 +1,95 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SectionWrapper from "./SectionWrapper";
-import { Send } from "lucide-react";
-import { useState, useRef } from "react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const Contact = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
-  const [submitted, setSubmitted] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const buttonRef = useRef(null);
 
-  const handleMouseMove = (e) => {
-    if (!buttonRef.current) return;
-    
-    const rect = buttonRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    // Calculate distance from mouse to button center
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
-    const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-    
-    // Magnet effect - only active within 150px radius
-    const magnetStrength = 0.3;
-    if (distance < 150) {
-      // Stronger pull when closer
-      const pull = Math.max(0, 1 - distance / 150) * magnetStrength;
-      setMousePosition({
-        x: distanceX * pull,
-        y: distanceY * pull
-      });
-    } else {
-      setMousePosition({ x: 0, y: 0 });
+  const contactInfo = [
+    {
+      icon: <Mail className="w-5 h-5" />,
+      label: "Email",
+      value: "rytway@gmail.com",
+      href: "mailto:hello@company.com"
+    },
+    {
+      icon: <Phone className="w-5 h-5" />,
+      label: "Phone",
+      value: "+91 75590 50658",
+      href: "tel:+917559050658"
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "Office",
+      value: "San Francisco, CA",
+      href: "#"
     }
-  };
-
-  const handleMouseLeave = () => {
-    setMousePosition({ x: 0, y: 0 });
-  };
+  ];
 
   return (
-    <SectionWrapper id="contact" number="07" numberPosition="right">
-      <div 
-        ref={ref} 
-        className="max-w-3xl"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
+    <SectionWrapper id="contact" number="06" numberPosition="right">
+      <div ref={ref} className="max-w-4xl">
         <motion.h2
           initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="font-heading font-black text-3xl md:text-5xl lg:text-6xl mb-6"
         >
-          Contact
+          Get in Touch
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-body text-muted-foreground text-sm md:text-base mb-12 max-w-xl"
+          className="font-body text-muted-foreground text-sm md:text-base mb-12 max-w-2xl"
         >
-          Operate with passion, adaptability, and a client-centered approach, serving as their go-to partner for business services and solutions.
+          Operate with passion, adaptability, and a client-centered approach, 
+          serving as their go-to partner for business services and solutions.
         </motion.p>
 
-        {submitted ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="p-8 border border-primary/30 rounded-lg text-center"
-          >
-            <p className="font-heading font-bold text-xl text-green-400">Thank you!</p>
-            <p className="font-body text-muted-foreground mt-2">We'll get back to you soon.</p>
-          </motion.div>
-        ) : (
-          <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSubmitted(true);
-            }}
-            className="space-y-6"
-          >
-            <div className="grid sm:grid-cols-2 gap-6">
-              <input
-                type="text"
-                placeholder="Name"
-                required
-                className="w-full bg-card border border-border rounded-sm px-4 py-3 font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                className="w-full bg-card border border-border rounded-sm px-4 py-3 font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-            <textarea
-              placeholder="Your message"
-              rows={5}
-              required
-              className="w-full bg-card border border-border rounded-sm px-4 py-3 font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
-            />
-            <motion.button
-              ref={buttonRef}
-              type="submit"
-              animate={{
-                x: mousePosition.x,
-                y: mousePosition.y
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-                mass: 0.5
-              }}
-              className="inline-flex items-center gap-2 font-heading font-semibold text-sm tracking-wider px-8 py-4 bg-green-400 text-white hover:bg-blue-400 transition-colors duration-300 rounded-sm relative z-10"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid md:grid-cols-3 gap-8"
+        >
+          {contactInfo.map((item, index) => (
+            <motion.a
+              key={item.label}
+              href={item.href}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}  
+              whileHover={{ y: -4 }}
+              className="group block p-6 border border-border border-green-50 hover:border-green-400 rounded-sm transition-all duration-300"
             >
-              Send Message
-              <Send className="w-4 h-4" />
-            </motion.button>
-          </motion.form>
-        )}
+              <div className="flex flex-col items-center text-center space-y-3">
+                <div className="p-3 rounded-full text-green-400 group-hover: group-hover:text-white transition-colors duration-300">
+                  {item.icon}
+                </div>
+                <h3 className="font-heading font-semibold text-sm uppercase tracking-wider text-muted-foreground">
+                  {item.label}
+                </h3>
+                <p className="font-body text-foreground">
+                  {item.value}
+                </p>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-16 text-center"
+        >
+          <p className="font-body text-muted-foreground text-sm">
+            Available for new projects and collaborations
+          </p>
+        </motion.div>
       </div>
     </SectionWrapper>
   );

@@ -60,10 +60,13 @@ const Hero = () => {
   const rytwayText = "RYTWAY";
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12"
-    >
+<section
+  id="hero"
+  className="relative min-h-screen flex items-center justify-center bg-[#0a0f1f] overflow-hidden px-6 md:px-12"
+>
+
+
+
       {/* Animated background particles */}
       {particles.map((particle) => (
         <motion.div
@@ -258,7 +261,7 @@ const Hero = () => {
         </motion.h1>
 
         {/* Animated underline with glow effect */}
-        <motion.div
+        {/* <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
@@ -279,7 +282,7 @@ const Hero = () => {
             }}
             className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400 to-transparent"
           />
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

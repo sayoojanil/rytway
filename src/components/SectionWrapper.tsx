@@ -23,7 +23,7 @@ const SectionWrapper = ({
     <section
       id={id}
       ref={ref}
-      className={`relative min-h-screen flex items-center overflow-hidden py-20 md:py-32 px-6 md:px-12 lg:px-20 ${className}`}
+className="relative min-h-[auto] md:min-h-screen flex items-center md:justify-center bg-[#0a0f1f] overflow-hidden px-6 md:px-12 py-16 md:py-0"
     >
       {number && (
         <motion.span
