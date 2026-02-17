@@ -63,7 +63,7 @@ const Contact = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}  
               whileHover={{ y: -4 }}
-              className="group block p-6 border border-border border-green-50 hover:border-green-400 rounded-sm transition-all duration-300"
+              className="group block p-6 border border-border border-blue-950 hover:border-green-400 rounded-lg transition-all duration-300"
             >
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="p-3 rounded-full text-green-400 group-hover: group-hover:text-white transition-colors duration-300">
