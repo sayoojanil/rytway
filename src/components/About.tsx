@@ -39,10 +39,10 @@ const About = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
         >
           <p className="font-body text-muted-foreground leading-relaxed text-sm md:text-base">
-Ryt Way Marketing Hub is a team of passionate marketers, designers, strategists, and content creators dedicated to building powerful brand identities.          </p>
+At Ryt Way, we believe marketing goes far beyond simply posting content on social media. True marketing is about strategic positioning, meaningful visibility, and sustainable long-term growth. It’s about understanding your audience, crafting the right message, and delivering it through the right channels at the right time.          </p>
           <p className="font-body text-muted-foreground leading-relaxed text-sm md:text-base mt-4">
 
-We believe marketing is not just about posting content — it's about positioning, visibility, and long-term brand growth.          </p>
+We focus on building brands with purpose — brands that connect, communicate, and convert. From market research and brand development to performance marketing and content strategy, we ensure every move is intentional and aligned with measurable business outcomes.          </p>
         </motion.div>
       </div>
     </SectionWrapper>

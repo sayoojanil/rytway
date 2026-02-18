@@ -2,21 +2,27 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SectionWrapper from "./SectionWrapper";
 import {
-  Lightbulb,
   BarChart3,
   PenTool,
-  Code2,
-  Share2,
   TrendingUp,
 } from "lucide-react";
 
 const services = [
-  
-  { title: "Digital Marketing", icon: BarChart3 },
-  { title: "Content Creation", icon: PenTool },
- 
-
-  { title: "Analytics & SEO", icon: TrendingUp },
+  { 
+    title: "BRANDING", 
+    icon: BarChart3,
+    description: "We are a passionate 'Digital Marketing Agency in Calicut'. We are primarily focused on the power of branding to increase businesses."
+  },
+  { 
+    title: "DIGITAL MARKETING", 
+    icon: PenTool,
+    description: "As a leading provider of Digital Marketing Agency in Calicut, our mission is to deliver valuable insights, strategies, and resources tailored to your needs."
+  },
+  { 
+    title: "ANALYTICS & SEO", 
+    icon: TrendingUp,
+    description: "We strive to stay ahead of the curve by incorporating the industry's latest trends and best practices."
+  },
 ];
 
 const Services = () => {
@@ -29,12 +35,12 @@ const Services = () => {
           initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="font-heading font-black text-3xl md:text-5xl lg:text-6xl mb-16"
+          className="font-heading font-black text-3xl md:text-5xl lg:text-6xl mb-16 text-white"
         >
           Services
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
@@ -43,13 +49,29 @@ const Services = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative p-8 border border-border rounded-none bg-card card-hover cursor-pointer"
+                className="group relative p-8 bg-zinc-900/50 border border-zinc-800 hover:border-green-500/50 transition-all duration-500"
               >
-                <Icon className="w-8 h-8 text-green-400 mb-5 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="font-heading font-bold text-lg text-foreground">
-                  {service.title}
-                </h3>
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primaryto-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="flex flex-col space-y-4">
+                  <Icon className="w-10 h-10 text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300" />
+                  
+                  <h3 className="font-heading font-bold text-2xl text-white">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-zinc-400 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  {/* <div className="pt-4">
+                    <button className="text-green-400 font-medium text-sm inline-flex items-center group-hover:gap-2 transition-all duration-300">
+                      Read More
+                      <span className="ml-1 group-hover:ml-2 transition-all duration-300">→</span>
+                    </button>
+                  </div> */}
+                </div>
+
+                {/* Bottom gradient line on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             );
           })}
