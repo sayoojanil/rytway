@@ -5,19 +5,19 @@ const posters = [
   {
     id: 1,
     title: "Project One",
-    image: "public/assets/poster.png",
+    image: "/assets/poster.png",
     description: "A stunning poster design for project one."
   },
   {
     id: 2,
     title: "Project Two",
-    image: "public/assets/fivestar.jpeg",
+    image: "/assets/fivestar.jpeg",
     description: "Creative poster for project two."
   },
   {
     id: 3,
     title: "Project Three",
-    image: "public/assets/DB.jpg.jpeg",
+    image: "/assets/DB.jpg.jpeg",
     description: "Innovative design for project three."
   }
 ];
