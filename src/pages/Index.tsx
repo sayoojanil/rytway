@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import Posters from "../components/Posters";
 import Services from "../components/Services";
 import About from "../components/About";
 import Steps from "../components/Steps";
@@ -26,6 +27,7 @@ const Index = () => {
     <div className="bg-background text-foreground">
       <Navbar />
       <Hero />
+      <Posters />
       <Services />
       <About />
       <Steps />

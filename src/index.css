@@ -86,6 +86,8 @@
     line-height: 1;
   }
 
+  
+
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
