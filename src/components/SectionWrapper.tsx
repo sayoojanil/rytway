@@ -10,7 +10,7 @@ interface SectionWrapperProps {
   numberPosition?: "left" | "right";
 }
 
-const SectionWrapper = ({
+const SectionWrapper = ({ 
   children,
   id,
   className = "",

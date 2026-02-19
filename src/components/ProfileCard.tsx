@@ -463,6 +463,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       ref={wrapRef}
       drag={isMobile ? "x" : false}
       dragConstraints={isMobile ? { left: -50, right: 50 } : undefined}
+      onClick={(e) => e.stopPropagation()}
       className={`relative touch-none ${className}`.trim()}
       style={{ perspective: '500px', transform: 'translate3d(0, 0, 0.1px)', ...cardStyle } as React.CSSProperties}
     >

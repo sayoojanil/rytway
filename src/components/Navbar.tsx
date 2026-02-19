@@ -15,7 +15,8 @@ const Navbar = () => {
       return { to: "/portfolios" };
     }
     let href = "";
-    if (link === "Services") href = "#services";
+    if (link === "") href = "#";
+    else if (link === "Services") href = "#services";
     else if (link === "About") href = "#about";
     else if (link === "Steps") href = "#process";
     else if (link === "Why Us") href = "#why-us";
@@ -41,25 +42,27 @@ const Navbar = () => {
 
   // Animation variants for the mobile menu
   const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      y: -20,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-        staggerChildren: 0.07,
-        delayChildren: 0.1
-      }
+  closed: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3, ease: "easeInOut" },
+    transitionEnd: {
+      display: "none"
     }
-  };
+  },
+  open: {
+    display: "flex",
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+      staggerChildren: 0.07,
+      delayChildren: 0.1
+    }
+  }
+};
+
 
   // Animation variants for menu items
   const menuItemVariants = {

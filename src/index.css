@@ -85,6 +85,16 @@
     font-size: clamp(8rem, 20vw, 20rem);
     line-height: 1;
   }
+
+  /* Add to your global CSS or component style */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html, body {
+  touch-action: manipulation;
+}
   
 
   .gradient-text {
