@@ -42,27 +42,26 @@ const Navbar = () => {
 
   // Animation variants for the mobile menu
   const mobileMenuVariants = {
-  closed: {
-    opacity: 0,
-    y: -20,
-    transition: { duration: 0.3, ease: "easeInOut" },
-    transitionEnd: {
-      display: "none"
+    closed: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.3, ease: "easeInOut" },
+      transitionEnd: {
+        display: "none"
+      }
+    },
+    open: {
+      display: "flex",
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+        staggerChildren: 0.07,
+        delayChildren: 0.1
+      }
     }
-  },
-  open: {
-    display: "flex",
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-      staggerChildren: 0.07,
-      delayChildren: 0.1
-    }
-  }
-};
-
+  };
 
   // Animation variants for menu items
   const menuItemVariants = {
@@ -83,7 +82,7 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-background/10 backdrop-blur-md border-b border-border/50"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-black/10 backdrop-blur-md "
     >
       <Link to="/" className="flex items-center -my-4">
         <img 
@@ -102,7 +101,7 @@ const Navbar = () => {
             <Component
               key={link}
               {...linkProps}
-              className="font-body text-sm text-muted-foreground hover:text-green-400 transition-colors duration-300"
+              className="font-body text-sm text-white/80 hover:text-green-400 transition-colors duration-300"
             >
               {link}
             </Component>
@@ -113,7 +112,7 @@ const Navbar = () => {
       {/* Animated mobile toggle */}
       <motion.button
         onClick={() => setOpen(!open)}
-        className="md:hidden text-foreground bg-background/10 backdrop-blur-md p-2 rounded-lg border border-border/50 hover:bg-background/20 transition-colors duration-300"
+        className="md:hidden text-white p-2 rounded-lg transition-colors duration-300"
         aria-label="Toggle menu"
         variants={menuVariants}
         animate={open ? "open" : "closed"}
@@ -122,12 +121,16 @@ const Navbar = () => {
         {open ? <X size={24} /> : <Menu size={24} />}
       </motion.button>
 
-      {/* Animated mobile menu with transparent backdrop */}
+      {/* Animated mobile menu */}
       <motion.div
         initial="closed"
         animate={open ? "open" : "closed"}
         variants={mobileMenuVariants}
-        className="absolute top-full left-0 right-0 bg-background/10 backdrop-blur-md border-b border-border/50 p-6 flex flex-col gap-4 md:hidden"
+        className="absolute top-full left-0 right-0 
+          bg-black/40 backdrop-blur-md
+          border-b border-white/10
+          shadow-lg shadow-black/20
+          p-6 flex flex-col gap-4 md:hidden"
       >
         {navLinks.map((link) => {
           const linkProps = getLinkProps(link);
@@ -140,7 +143,7 @@ const Navbar = () => {
               <Component
                 {...linkProps}
                 onClick={() => setOpen(false)}
-                className="font-body text-muted-foreground hover:text-green-400 transition-colors duration-300 block py-2"
+                className="font-body text-white/80 hover:text-green-400 transition-colors duration-300 block py-2 text-base"
               >
                 {link}
               </Component>
