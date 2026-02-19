@@ -23,7 +23,7 @@ const Contact = () => {
       icon: <MapPin className="w-5 h-5" />,
       label: "Office",
       value: "Kerala india",
-      href: "#"
+      href: "https://maps.app.goo.gl/sjudrfZVm4TzhyFp7"
     }
   ];
 

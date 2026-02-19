@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SectionWrapper from "./SectionWrapper";
 import {
@@ -57,6 +57,26 @@ const Services = () => {
     threshold: 0.1,
     rootMargin: "-50px"
   });
+
+  const rotateX = useSpring(useMotionValue(0), { damping: 30, stiffness: 100, mass: 2 });
+  const rotateY = useSpring(useMotionValue(0), { damping: 30, stiffness: 100, mass: 2 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left - rect.width / 2;
+    const offsetY = e.clientY - rect.top - rect.height / 2;
+
+    const rotationX = (offsetY / (rect.height / 2)) * -14;
+    const rotationY = (offsetX / (rect.width / 2)) * 14;
+
+    rotateX.set(rotationX);
+    rotateY.set(rotationY);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -150,7 +170,7 @@ We provide businesses with an expert team that guides them through establishing 
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10 [perspective:800px]"
         >
           {services.map((service, i) => {
             const Icon = service.icon;
@@ -159,7 +179,10 @@ We provide businesses with an expert team that guides them through establishing 
                 key={service.title}
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
-                className="group relative"
+                className="group relative [transform-style:preserve-3d]"
+                style={{ rotateX, rotateY }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
               >
                 <div className="relative p-8 bg-card border border-border rounded-2xl overflow-hidden h-full flex flex-col">
                   {/* Background gradient overlay */}

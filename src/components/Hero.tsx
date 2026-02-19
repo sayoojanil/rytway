@@ -414,7 +414,6 @@ const Hero = () => {
           }}
           className="text-muted-foreground text-xs tracking-widest uppercase font-body"
         >
-          Scroll
         </motion.span>
         <motion.div
           animate={{ 
