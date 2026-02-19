@@ -63,7 +63,7 @@ interface TiltEngine {
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   avatarUrl = '/assets/WhatsApp Image 2026-02-19 at 3.08.38 PM (1).jpeg',
-  iconUrl = 'public/assets/WhatsApp_Image_2026-02-18_sat_11.55.53_PM-removebg-preview.png',
+  iconUrl = '/assets/WhatsApp_Image_2026-02-18_sat_11.55.53_PM-removebg-preview.png',
   grainUrl = '',
   innerGradient,
   behindGlowEnabled = true,
