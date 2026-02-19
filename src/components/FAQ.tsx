@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionWrapper from "./SectionWrapper";
 import {
   Accordion,
@@ -87,6 +87,23 @@ const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const categories = Array.from(new Set(faqs.map(faq => faq.category)));
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    const check = () => document.body.getAttribute('data-modal-open') === 'works';
+    setIsModalOpen(check());
+
+    const obs = new MutationObserver(() => {
+      setIsModalOpen(check());
+    });
+
+    obs.observe(document.body, { attributes: true, attributeFilter: ['data-modal-open'] });
+
+    return () => obs.disconnect();
+  }, []);
+
   const filteredFaqs = activeCategory 
     ? faqs.filter(faq => faq.category === activeCategory)
     : faqs;
@@ -129,9 +146,11 @@ const FAQ = () => {
             </div> */}
           </motion.div>
 
-          <motion.h2 
-            className="font-heading font-black text-4xl md:text-6xl lg:text-5xl mb-6 bg-gray-200 bg-clip-text text-transparent"
-            animate={inView ? { 
+          <motion.h2
+            className={`font-heading font-black text-4xl md:text-6xl lg:text-5xl mb-6 ${
+              isModalOpen ? 'text-blue-400' : 'bg-gray-200 bg-clip-text text-transparent'
+            }`}
+            animate={inView ? {
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
             } : {}}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
