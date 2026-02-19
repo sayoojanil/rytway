@@ -29,6 +29,7 @@ const Footer = () => {
       heading: "Company",
       links: [
         { name: "About Us", url: "#about" },
+        
         // { name: "Careers", url: "/careers" },
         // { name: "Press", url: "/press" },
       ]

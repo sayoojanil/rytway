@@ -50,7 +50,7 @@ const Index = () => {
             name="Shyni Hassan"
             title="r"
             handle="Shyni Hassan"
-            status="Business development manage"
+            status="Business development manager"
             avatarUrl="/assets/WhatsApp Image 2026-02-19 at 3.08.38 PM.jpeg"
           />
           {/* <ProfileCard 

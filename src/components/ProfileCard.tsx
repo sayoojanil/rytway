@@ -77,7 +77,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   // name = 'Sreerag',
   title = '',
   handle = 'Sreerag',
-  status = 'CEO',
+  status = 'CEO of Rytway',
   contactText = '',
   showUserInfo = true,
   onContactClick
@@ -570,11 +570,11 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className="rounded-full overflow-hidden border border-white/10 flex-shrink-0"
-                      style={{ width: '48px', height: '48px' }}
+                      className="rounded-full overflow-hidden  flex-shrink-0"
+                      style={{ width: '32px', height: '32px' }}
                     >
                       <img
-                        className="w-full h-full object-cover rounded-full"
+                        className="w-full h-full object-cover rounded-one"
                         src={miniAvatarUrl || avatarUrl}
                         alt={`${name || 'User'} mini avatar`}
                         loading="lazy"

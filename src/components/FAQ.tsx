@@ -14,42 +14,42 @@ const faqs = [
   {
     question: "What services do you offer?",
     answer: "We offer comprehensive digital marketing services including performance marketing, lead generation, brand strategy, SEO, PPC advertising, content creation, and digital transformation consulting.",
-    category: "services"
+    category: ""
   },
   {
     question: "How do you measure success?",
     answer: "We focus on key performance indicators like ROI, conversion rates, lead quality, brand awareness metrics, and revenue growth. Each campaign is tailored with specific, measurable goals.",
-    category: "performance"
+    category: ""
   },
   {
     question: "What's your typical project timeline?",
     answer: "Project timelines vary based on scope and complexity. A standard campaign setup takes 2-4 weeks, while comprehensive brand transformations may take 3-6 months. We'll provide a detailed timeline during our initial consultation.",
-    category: "process"
+    category: ""
   },
   {
     question: "Do you work with businesses of all sizes?",
     answer: "Yes, we work with startups, small businesses, and enterprise clients. Our strategies are scalable and can be customized to fit different budgets and business stages.",
-    category: "clients"
+    category: ""
   },
   {
     question: "What makes your approach different?",
     answer: "We combine data-driven strategies with creative execution, focusing on sustainable growth rather than quick wins. Our team has extensive experience across industries and stays updated with the latest digital marketing trends.",
-    category: "approach"
+    category: ""
   },
   {
     question: "How do you handle pricing?",
     answer: "We offer flexible pricing models including project-based, retainer, and performance-based arrangements. Pricing depends on the scope, duration, and specific requirements of your project.",
-    category: "pricing"
+    category: ""
   },
   {
     question: "Can you work with our existing marketing team?",
     answer: "Absolutely. We can collaborate with your in-house team, provide training, or take a lead role depending on your needs. Our goal is to empower your business with sustainable marketing capabilities.",
-    category: "collaboration"
+    category: ""
   },
   {
     question: "What industries do you specialize in?",
     answer: "We have experience across various industries including e-commerce, real estate, healthcare, technology, professional services, and consumer brands. Our adaptable approach works across sectors.",
-    category: "industries"
+    category: ""
   }
 ];
 
@@ -182,13 +182,9 @@ const FAQ = () => {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 md:px-6 md:py-3 rounded-md font-heading font-semibold transition-all duration-300 ${
-              !activeCategory 
-                ? 'bg-green-400 text-black shadow-lg shadow-blue-400/25' 
-                : 'bg-card text-muted-foreground hover:bg-green-400/10 hover:text-green'
-            }`}
+           
           >
-            All
+            
           </motion.button>
           
           {categories.map((category, index) => (
@@ -198,11 +194,11 @@ const FAQ = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 md:px-6 md:py-3 rounded-md font-heading font-semibold transition-all duration-300 ${
-                activeCategory === category 
-                  ? 'bg-green-400 text-black shadow-lg shadow-blue-400/25' 
-                  : 'bg-card text-muted-foreground hover:bg-green-400/10 hover:text-white'
-              }`}
+              // className={`px-4 py-2 md:px-6 md:py-3 rounded-md font-heading font-semibold transition-all duration-300 ${
+              //   activeCategory === category 
+              //     ? 'bg-green-400 text-black shadow-lg shadow-blue-400/25' 
+              //     : 'bg-card text-muted-foreground hover:bg-green-400/10 hover:text-white'
+              // }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </motion.button>

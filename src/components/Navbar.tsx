@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const navLinks = ["Portfolios", "Services", "About", "Steps", "Why Us", "Contact"];
+const navLinks = ["Home", "Services", "About", "Steps", "Why Us", "Contact"];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -16,6 +16,7 @@ const Navbar = () => {
     }
     let href = "";
     if (link === "") href = "#";
+    //  else if (link === "Our Works") href = "#our-works";
     else if (link === "Services") href = "#services";
     else if (link === "About") href = "#about";
     else if (link === "Steps") href = "#process";
@@ -101,7 +102,7 @@ const Navbar = () => {
             <Component
               key={link}
               {...linkProps}
-              className="font-body text-sm text-white/80 hover:text-green-400 transition-colors duration-300"
+              className="font-body text-sm font-bold text-white/80 hover:text-green-400 transition-colors duration-300"
             >
               {link}
             </Component>

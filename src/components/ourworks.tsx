@@ -159,8 +159,8 @@ const OurWorks = () => {
       <div ref={ref} className="relative">
         {/* Background Decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl" />
+          {/* <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" /> */}
+          {/* <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl" /> */}
         </div>
 
         {/* Section Header */}
@@ -174,7 +174,7 @@ const OurWorks = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-green-400/10 text-green-400 px-4 py-2 rounded-full mb-4"
+            // className="inline-flex items-center gap-2 bg-green-400/10 text-green-400 px-4 py-2 rounded-full mb-4"
           >
             {/* <Zap className="w-4 h-4" /> */}
             {/* <span className="text-sm font-medium">Our Work</span> */}
