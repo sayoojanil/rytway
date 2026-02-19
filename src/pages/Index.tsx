@@ -51,7 +51,7 @@ const Index = () => {
             title="r"
             handle="Shyni Hassan"
             status="Business development manage"
-            avatarUrl="public/assets/image.jpeg"
+            avatarUrl="/assets/image.jpeg"
           />
           {/* <ProfileCard 
             name="Safvan"
