@@ -83,32 +83,20 @@ const OurWorks = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1]
-      }
-    }
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -122,45 +110,38 @@ const OurWorks = () => {
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl" />
         </div>
 
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative mb-20"
+          transition={{ duration: 0.6 }}
+          className="relative mb-12 text-center"
         >
-          {/* Section Header */}
-          <div className="flex flex-col items-center text-center mb-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-green-400/10 text-green-400 px-4 py-2 rounded-full mb-6"
-            >
-              <Zap className="w-4 h-4" />
-              <span className="text-sm font-medium">Our Portfolio</span>
-            </motion.div>
-            
-            <h2 className="font-heading font-black text-4xl md:text-6xl lg:text-7xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-400">
-              Our Portfolios
-              <br />
-              {/* <span className="text-green-400">Portfolio</span> */}
-            </h2>
-            
-            <p className="font-body text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-              Every project tells a story of growth, innovation, and measurable success. 
-              Explore how we've helped businesses achieve remarkable results.
-            </p>
-          </div>
-
-          {/* Stats Bar */}
-        
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-green-400/10 text-green-400 px-4 py-2 rounded-full mb-4"
+          >
+            <Zap className="w-4 h-4" />
+            <span className="text-sm font-medium">Our Work</span>
+          </motion.div>
+          
+          <h2 className="font-heading font-black text-4xl md:text-5xl mb-4">
+            Featured <span className="text-green-400">Projects</span>
+          </h2>
+          
+          <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">
+            Real results for real businesses. Browse our latest success stories.
+          </p>
         </motion.div>
 
+        {/* Image Grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="relative space-y-32"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {works.map((work, i) => {
             const MetricIcon = work.metricIcon;
@@ -169,188 +150,98 @@ const OurWorks = () => {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="group relative"
+                className="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-green-400/50 transition-all duration-300"
               >
-                {/* Floating Background Number */}
-                <div className="absolute -top-10 -left-4 text-[120px] md:text-[180px] font-heading font-black text-white/5 select-none pointer-events-none">
-                  {work.num}
-                </div>
-
-                <div className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
-                  i % 2 === 0 ? '' : 'lg:direction-rtl'
-                }`}>
-                  
-                  {/* Image Section with 3D Effect */}
-                  <motion.div 
-                    className={`relative overflow-hidden rounded-3xl aspect-[4/3] ${
-                      i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'
-                    }`}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4 }}
-                  >
+                {/* Image Container */}
+                <Link to={`/work/${work.num}`} className="block">
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     {/* Gradient Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${work.gradient} opacity-60 mix-blend-overlay z-10`} />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${work.gradient} opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-10`} />
                     
                     {/* Image */}
-                    <div className="absolute inset-0 bg-black/40 z-[5]" />
                     <img 
                       src={work.image} 
                       alt={work.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     
-                    {/* Results Overlay */}
-                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                      <div className="grid grid-cols-3 gap-4">
-                        {work.results.map((result, idx) => (
-                          <div key={idx} className="text-center">
-                            <div className="text-green-400 font-heading font-bold text-xl">
-                              {result.value}
-                            </div>
-                            <div className="text-white/80 text-xs">
-                              {result.label}
-                            </div>
-                          </div>
-                        ))}
+                    {/* Number Badge */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="text-2xl font-black text-white/20 group-hover:text-white/40 transition-colors">
+                        {work.num}
+                      </span>
+                    </div>
+                    
+                    {/* Metric Badge */}
+                    <div className="absolute top-4 right-4 z-20">
+                      <div className="bg-black/80 backdrop-blur-sm text-green-400 px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 border border-white/10">
+                        <MetricIcon className="w-3 h-3" />
+                        <span>{work.metrics}</span>
                       </div>
                     </div>
-
-                    {/* Metrics Badge with Animation */}
-                    {/* <motion.div 
-                      className="absolute top-4 right-4 z-30"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <div className="bg-gradient-to-r from-green-400 to-green-500 text-black px-4 py-2 rounded-full font-heading font-bold text-sm flex items-center gap-2 shadow-lg">
-                        <MetricIcon className="w-4 h-4" />
-                        {work.metrics}
-                      </div>
-                    </motion.div> */}
-
+                    
                     {/* Tags */}
                     <div className="absolute bottom-4 left-4 flex flex-wrap gap-2 z-20">
-                      {work.tags.map((tag, index) => (
-                        <motion.span 
+                      {work.tags.slice(0, 2).map((tag, index) => (
+                        <span 
                           key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-white/20"
+                          className="bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-full text-[10px] font-medium border border-white/20"
                         >
                           {tag}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Content Section */}
-                  <motion.div 
-                    variants={textVariants}
-                    className={`${
-                      i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'
-                    } relative`}
-                  >
-                    <div className="space-y-6">
-                      {/* Category Badge */}
-                      <div className="inline-block">
-                        <span className="text-xs uppercase tracking-[0.2em] text-green-400 font-medium bg-green-400/10 px-4 py-2 rounded-full">
-                          {work.category}
                         </span>
-                      </div>
-
-                      {/* Title with Interactive Arrow */}
-                      <Link 
-                        to={`/work/${work.num}`}
-                        className="block group/title"
-                      >
-                        <div className="flex items-start justify-between gap-4">
-                          <h3 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground group-hover/title:text-green-400 transition-colors duration-300">
-                            {work.title}
-                          </h3>
-                          <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="flex-shrink-0"
-                          >
-                            <div className="w-12 h-12 rounded-full bg-green-400/10 flex items-center justify-center group-hover/title:bg-green-400 transition-colors duration-300">
-                              <ArrowUpRight className="w-5 h-5 text-green-400 group-hover/title:text-black transition-colors duration-300" />
-                            </div>
-                          </motion.div>
-                        </div>
-                      </Link>
-
-                      {/* Description */}
-                      <p className="font-body text-muted-foreground text-lg leading-relaxed">
-                        {work.desc}
-                      </p>
-
-                      {/* Key Results Preview */}
-                      <div className="grid grid-cols-3 gap-4 pt-4">
-                        {work.results.map((result, idx) => (
-                          <div key={idx} className="text-center p-3 bg-white/5 rounded-xl border border-white/10">
-                            <div className="text-green-400 font-heading font-bold text-lg">
-                              {result.value}
-                            </div>
-                            <div className="text-muted-foreground text-xs">
-                              {result.label}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* View Case Study Link */}
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        className="pt-4"
-                      >
-                        <Link 
-                          to={`/work/${work.num}`}
-                          className="inline-flex items-center gap-3 text-green-400 font-medium hover:text-green-300 transition-colors duration-300 group/link"
-                        >
-                          <span className="text-lg">View Case Study</span>
-                          <ArrowUpRight className="w-5 h-5 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 group-hover/link:w-full transition-all duration-300" />
-                        </Link>
-                      </motion.div>
+                      ))}
+                      {work.tags.length > 2 && (
+                        <span className="bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-full text-[10px] font-medium border border-white/20">
+                          +{work.tags.length - 2}
+                        </span>
+                      )}
                     </div>
-                  </motion.div>
-                </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="font-heading font-bold text-xl text-foreground group-hover:text-green-400 transition-colors line-clamp-1">
+                        {work.title}
+                      </h3>
+                      <ArrowUpRight className="w-4 h-4 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                    </div>
+                    
+                    <p className="font-body text-muted-foreground text-sm line-clamp-2 mb-3">
+                      {work.desc}
+                    </p>
+                    
+                    {/* Quick Results */}
+                    <div className="flex items-center gap-3 text-xs">
+                      <span className="text-green-400 font-medium">{work.results[0].value}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-green-400 font-medium">{work.results[1].value}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-green-400 font-medium">{work.results[2].value}</span>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Call to Action */}
+        {/* View All Link */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="relative text-center mt-32"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-10"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 via-transparent to-blue-400/20 blur-3xl -z-10" />
-          
-          {/* <h3 className="font-heading font-bold text-3xl md:text-4xl mb-6">
-            Ready to Write Your Success Story?
-          </h3> */}
-          
-          {/* <Link 
-            to="/contact"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-heading font-bold px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-400/25"
+          <Link 
+            to="/work"
+            className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors group"
           >
-            <span className="text-lg">Start Your Project</span>
-            <ArrowUpRight className="w-5 h-5" />
-          </Link> */}
+            <span className="font-medium">View All Projects</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
-
-      <style jsx>{`
-        .lg\\:direction-rtl {
-          direction: rtl;
-        }
-        .lg\\:direction-rtl > div {
-          direction: ltr;
-        }
-      `}</style>
     </SectionWrapper>
   );
 };

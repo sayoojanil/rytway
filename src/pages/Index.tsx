@@ -51,7 +51,7 @@ const Index = () => {
             title="r"
             handle="Shyni Hassan"
             status="Business development manage"
-            avatarUrl="/assets/image.jpeg"
+            avatarUrl="/assets/WhatsApp Image 2026-02-19 at 3.08.38 PM.jpeg"
           />
           {/* <ProfileCard 
             name="Safvan"
@@ -70,7 +70,7 @@ const Index = () => {
         </div>
       </section>
       <WhySection />
-      {/* <OurWorks /> */}
+      <OurWorks />
       
       <FAQ />
       <Contact />
