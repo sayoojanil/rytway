@@ -10,7 +10,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       label: "Email",
-      value: "rytway@gmail.com",
+      value: "rytway26@gmail.com",
       href: "mailto:hello@company.com"
     },
     {
@@ -23,7 +23,7 @@ const Contact = () => {
       icon: <MapPin className="w-5 h-5" />,
       label: "Office",
       value: "Kerala india",
-      href: "https://maps.app.goo.gl/sjudrfZVm4TzhyFp7"
+      href: "https://maps.app.goo.gl/Zzbs9XnfJUGgn2f96"
     }
   ];
 

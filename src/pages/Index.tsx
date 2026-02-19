@@ -42,7 +42,7 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           className="font-heading font-black text-4xl md:text-6xl lg:text-6xl mb-16 text-center"
         >
-          Our Team
+          Co-Founders
         </motion.h2>
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center gap-8">
           <ProfileCard />
@@ -53,7 +53,7 @@ const Index = () => {
             status="Business development manage"
             avatarUrl="public/assets/image.jpeg"
           />
-          <ProfileCard 
+          {/* <ProfileCard 
             name="Safvan"
             title=""
             handle="Swafvan"
@@ -66,11 +66,11 @@ const Index = () => {
             handle="Nazrin"
             status="Social media manager"
             avatarUrl="public/assets/IMG-20251230-WA0050.jpg.jpeg"
-          />
+          /> */}
         </div>
       </section>
       <WhySection />
-      <OurWorks />
+      {/* <OurWorks /> */}
       
       <FAQ />
       <Contact />
