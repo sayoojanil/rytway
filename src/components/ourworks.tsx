@@ -14,7 +14,7 @@ const works = [
     desc: "Scaled a fashion e-commerce brand from ₹2L to ₹18L monthly revenue using paid ads, funnel optimization, and conversion-focused creatives.",
     metrics: "900% Revenue Growth",
     metricIcon: TrendingUp,
-    image: "/assets/DB.jpg.jpeg",
+    image: "/assets/jwellery.jpeg",
     tags: ["Meta Ads", "Google Ads", "CRO"],
     gradient: "from-purple-600 to-pink-600",
     results: [
@@ -94,6 +94,22 @@ const works = [
     desc: "Scaled an online learning platform to 50,000+ active users through content marketing and paid acquisition strategies.",
     metricIcon: GraduationCap,
     image: "/assets/IMG_20260206_155105.jpg.jpeg",
+    metrics: "50K+ Users",
+    tags: ["Content Marketing", "YouTube Ads", "Email Automation"],
+    gradient: "from-blue-600 to-indigo-600",
+    results: [
+      { label: "Course Completion", value: "82%" },
+      { label: "NPS Score", value: "+72" },
+      { label: "Revenue", value: "+340%" }
+    ]
+  },
+  {
+    num: "06",
+    title: "EdTech Platform Growth",
+    category: "User Acquisition",
+    desc: "Scaled an online learning platform to 50,000+ active users through content marketing and paid acquisition strategies.",
+    metricIcon: GraduationCap,
+    image: "/assets/DB.jpg.jpeg",
     metrics: "50K+ Users",
     tags: ["Content Marketing", "YouTube Ads", "Email Automation"],
     gradient: "from-blue-600 to-indigo-600",

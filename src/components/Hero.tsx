@@ -71,7 +71,7 @@ const Hero = () => {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-green-400/20"
+          className="absolute rounded-full "
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -100,7 +100,7 @@ const Hero = () => {
           y: mousePosition.y * 2,
         }}
         transition={{ type: "spring", stiffness: 50, damping: 30 }}
-        className="absolute top-20 left-20 w-72 h-72 bg-green-400/5 rounded-full blur-3xl"
+        className="absolute top-20 left-20 w-72 h-72  rounded-full blur-3xl"
       />
       <motion.div
         animate={{
@@ -132,7 +132,7 @@ const Hero = () => {
         }}
         className="section-number right-4 md:right-16 top-1/2 -translate-y-1/2 text-green-400/10"
       >
-        01
+        {/* 01 */}
       </motion.span>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">

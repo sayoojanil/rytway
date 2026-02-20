@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useCallback, useEffect, useRef, useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import {
   BarChart3,
@@ -11,6 +12,136 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+
+// CountUp Component
+const CountUp = ({
+  to,
+  from = 0,
+  direction = 'up',
+  delay = 0,
+  duration = 2,
+  className = '',
+  startWhen = true,
+  separator = '',
+  onStart,
+  onEnd
+}: {
+  to: number;
+  from?: number;
+  direction?: 'up' | 'down';
+  delay?: number;
+  duration?: number;
+  className?: string;
+  startWhen?: boolean;
+  separator?: string;
+  onStart?: () => void;
+  onEnd?: () => void;
+}) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(direction === 'down' ? to : from);
+
+  const damping = 20 + 40 * (1 / duration);
+  const stiffness = 100 * (1 / duration);
+
+  const springValue = useSpring(motionValue, {
+    damping,
+    stiffness
+  });
+
+  const [isInView, setIsInView] = useState(false);
+  const observerRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, margin: '0px' }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const getDecimalPlaces = (num: number) => {
+    const str = num.toString();
+
+    if (str.includes('.')) {
+      const decimals = str.split('.')[1];
+
+      if (parseInt(decimals) !== 0) {
+        return decimals.length;
+      }
+    }
+
+    return 0;
+  };
+
+  const maxDecimals = Math.max(getDecimalPlaces(from), getDecimalPlaces(to));
+
+  const formatValue = useCallback(
+    (latest: number) => {
+      const hasDecimals = maxDecimals > 0;
+
+      const options = {
+        useGrouping: !!separator,
+        minimumFractionDigits: hasDecimals ? maxDecimals : 0,
+        maximumFractionDigits: hasDecimals ? maxDecimals : 0
+      };
+
+      const formattedNumber = Intl.NumberFormat('en-US', options).format(latest);
+
+      return separator ? formattedNumber.replace(/,/g, separator) : formattedNumber;
+    },
+    [maxDecimals, separator]
+  );
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.textContent = formatValue(direction === 'down' ? to : from);
+    }
+  }, [from, to, direction, formatValue]);
+
+  useEffect(() => {
+    if (isInView && startWhen) {
+      if (typeof onStart === 'function') onStart();
+
+      const timeoutId = setTimeout(() => {
+        motionValue.set(direction === 'down' ? from : to);
+      }, delay * 1000);
+
+      const durationTimeoutId = setTimeout(
+        () => {
+          if (typeof onEnd === 'function') onEnd();
+        },
+        delay * 1000 + duration * 1000
+      );
+
+      return () => {
+        clearTimeout(timeoutId);
+        clearTimeout(durationTimeoutId);
+      };
+    }
+  }, [isInView, startWhen, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on('change', (latest: number) => {
+      if (ref.current) {
+        ref.current.textContent = formatValue(latest);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [springValue, formatValue]);
+
+  return <span className={className} ref={observerRef}><span ref={ref} /></span>;
+};
 
 const services = [
   { 
@@ -151,7 +282,7 @@ const Services = () => {
                 initial={{ scaleX: 0 }}
                 animate={inView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-blue-950 to-transparent origin-left"
+                // className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-blue-950 to-transparent origin-left"
               />
             </span>
           </motion.h2>
@@ -162,7 +293,8 @@ const Services = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-muted-foreground text-lg max-w-2xl mt-8"
           >
-We provide businesses with an expert team that guides them through establishing online marketing strategy. Our areas of expertise include Digital marketing services in Calicut, branding, production, website development, package design, and printing design.          </motion.p>
+            We provide businesses with an expert team that guides them through establishing online marketing strategy. Our areas of expertise include Digital marketing services in Calicut, branding, production, website development, package design, and printing design.
+          </motion.p>
         </motion.div>
 
         {/* Services grid */}
@@ -227,40 +359,46 @@ We provide businesses with an expert team that guides them through establishing 
           })}
         </motion.div>
 
-        {/* Stats section */}
-       {/* Stats section */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  animate={inView ? { opacity: 1, y: 0 } : {}}
-  transition={{ duration: 0.8, delay: 0.8 }}
-  className="grid grid-cols-4 gap-2 md:gap-8 mt-20 p-4 md:p-8 "
->
-  {[
-    { value: "100+", label: "Projects Completed", icon: Sparkles },
-    { value: "100%", label: "Client Satisfaction", icon: Target },
-    { value: "2+", label: "Industry Awards", icon: TrendingUp },
-    { value: "5+", label: "Years Experience", icon: BarChart3 },
-  ].map((stat, i) => {
-    const StatIcon = stat.icon;
-    return (
-      <motion.div
-        key={stat.label}
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.9 + i * 0.1 }}
-        className="text-center"
-      >
-        <StatIcon className="w-5 h-5 md:w-6 md:h-6 text-green-400 mx-auto mb-2 md:mb-3" />
-        <div className="font-heading font-black text-sm sm:text-base md:text-2xl lg:text-3xl text-foreground">
-          {stat.value}
-        </div>
-        <div className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 md:mt-1 truncate px-1">
-          {stat.label}
-        </div>
-      </motion.div>
-    );
-  })}
-</motion.div>
+        {/* Stats section with animated counters */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="grid grid-cols-4 gap-2 md:gap-8 mt-20 p-4 md:p-8"
+        >
+          {[
+            { value: 100, label: "Projects Completed", icon: Sparkles, suffix: "+" },
+            { value: 100, label: "Client Satisfaction", icon: Target, suffix: "%" },
+            { value: 2, label: "Industry Awards", icon: TrendingUp, suffix: "+" },
+            { value: 5, label: "Years Experience", icon: BarChart3, suffix: "+" },
+          ].map((stat, i) => {
+            const StatIcon = stat.icon;
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.9 + i * 0.1 }}
+                className="text-center"
+              >
+                <StatIcon className="w-5 h-5 md:w-6 md:h-6 text-green-400 mx-auto mb-2 md:mb-3" />
+                <div className="font-heading font-black text-sm sm:text-base md:text-2xl lg:text-3xl text-foreground">
+                  <CountUp
+                    to={stat.value}
+                    from={0}
+                    duration={5}
+                    delay={0.2 + i * 0.1}
+                    separator=","
+                  />
+                  {stat.suffix}
+                </div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 md:mt-1 truncate px-1">
+                  {stat.label}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </SectionWrapper>
   );

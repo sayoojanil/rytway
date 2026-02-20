@@ -231,7 +231,7 @@ const FAQ = () => {
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-3"
                     >
-                      <span className="w-2 h-2 bg-green-400 rounded-full group-hover:scale-150 transition-transform duration-300" />
+                      <span className="w-2 h-2  group-hover:scale-150 transition-transform duration-300" />
                       {faq.question}
                     </motion.span>
                   </AccordionTrigger>

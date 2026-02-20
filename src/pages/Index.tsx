@@ -13,6 +13,7 @@ import OurWorks from "../components/ourworks";
 import FAQ from "../components/FAQ";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import FloatingLogos from "../components/Logos";
 
 const Index = () => {
   const location = useLocation();
@@ -71,11 +72,13 @@ const Index = () => {
       </section>
       <WhySection />
       <OurWorks />
+      <FloatingLogos/>
       
       <FAQ />
       <Contact />
       <Footer />
     </div>
+    
   );
 };
 

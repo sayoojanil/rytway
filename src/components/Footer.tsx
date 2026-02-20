@@ -10,12 +10,12 @@ const Footer = () => {
       url: "https://www.facebook.com/share/1DJB9BRJVs/",
       ariaLabel: "Visit our Facebook page"
     },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      url: "https://www.linkedin.com/in/yourusername",
-      ariaLabel: "Visit our LinkedIn profile"
-    },
+    // {
+    //   name: "LinkedIn",
+    //   icon: Linkedin,
+    //   url: "https://www.linkedin.com/in/yourusername",
+    //   ariaLabel: "Visit our LinkedIn profile"
+    // },
     {
       name: "Instagram",
       icon: Instagram,
@@ -30,8 +30,8 @@ const Footer = () => {
       links: [
         { name: "About Us", url: "#about" },
         
-        // { name: "Careers", url: "/careers" },
-        // { name: "Press", url: "/press" },
+        { name: "Why Us", url: "#why-us" },
+        // { name: "Portfolio", url: "#our-works" },
       ]
     },
     // {
