@@ -31,7 +31,7 @@ const Navbar = () => {
 
   // Handle WhatsApp contact click
   const handleContactClick = () => {
-    const phoneNumber = "1234567890"; // Replace with your actual WhatsApp number
+    const phoneNumber = "917559050658"; // Replace with your actual WhatsApp number
     const message = encodeURIComponent("Hi! I'm interested in your services. Can we discuss further?");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
